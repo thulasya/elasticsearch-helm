@@ -1,0 +1,30 @@
+---
+clusterName: "elasticsearch"
+nodeGroup: "client"
+roles:
+  master: "false"
+  ingest: "false"
+  data: "false"
+replicas: 2
+#nodeSelector:
+#  highpreformance: "yes"
+#tolerations:
+#- key: "node-type"
+#  operator: "Equal"
+#  value: "high-pref"
+#  effect: "NoSchedule"
+resources:
+  requests:
+    cpu: "500m"
+    memory: "500Mi"
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "standard"
+  resources:
+    requests:
+      storage: 5Gi
+persistence:
+  enabled: false

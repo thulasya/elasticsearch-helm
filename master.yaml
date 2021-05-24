@@ -1,0 +1,30 @@
+---
+clusterName: "elasticsearch"
+nodeGroup: "master"
+roles:
+  master: "true"
+  ingest: "false"
+  data: "false"
+replicas: 3
+#nodeSelector:
+#  highpreformance: "yes"
+#tolerations:
+#- key: "node-type"
+#  operator: "Equal"
+#  value: "high-pref"
+#  effect: "NoSchedule"
+resources:
+  requests:
+    cpu: "500m"
+    memory: "2Gi"
+  limits:
+    cpu: "1000m"
+    memory: "3Gi"
+esJavaOpts: "-Xmx1g -Xms1g"
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "standard"
+  resources:
+    requests:
+      storage: 10Gi
+
